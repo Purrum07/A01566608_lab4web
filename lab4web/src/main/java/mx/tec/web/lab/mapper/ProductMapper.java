@@ -32,6 +32,9 @@ public class ProductMapper {
 	@Resource
     private ModelMapper modelMapper;
 	
+	/**
+	 * Reference to the Comment Service
+	 */
 	@Resource
 	CommentsService commentService;
 

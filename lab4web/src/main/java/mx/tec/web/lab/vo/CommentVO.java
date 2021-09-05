@@ -15,9 +15,16 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  * @author Enrique Sanchez
  */
 public class CommentVO {
+	/** Comment id*/
 	private long id;
+	
+	/** Comment author*/
 	private String author;
+	
+	/** Comment body */
 	private String body;
+	
+	/** Comment date of creation*/
     @JsonFormat(pattern="yyyy-M-dd",timezone = "GMT-6")
 	private Calendar created;
 	

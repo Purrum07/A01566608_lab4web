@@ -9,30 +9,30 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 /**
- * Valid Color Interface to manage actions when validating sizes
+ * Valid Color Interface to manage actions when validating colors
  * @author Mario Márquez
  * @version 1.0
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.FIELD })
-@Constraint(validatedBy = SizeValidator.class)
-public @interface ValidSize {
+@Constraint(validatedBy = ColorValidator.class)
+public @interface ValidColor {
 	
 	/**
-	 * Default message when invalid size is given
-	 * @return message Invalid sizes
+	 * Default message when invalid color is given
+	 * @return message Invalid color
 	 */
-	String message() default "Invalid size";
+	String message() default "Invalid color";
 
 	/**
-	 * Default group when invalid size is given
+	 * Default group when invalid color is given
 	 * @return List of groups
 	 */
 	Class<?>[] groups() default {};
 	
 	/**
-	 * Default Payload associated with the constraint declaration when invalid size is given
+	 * Default Payload associated with the constraint declaration when invalid color is given
 	 * @return List of Payload 
 	 */
 	Class<? extends Payload>[] payload() default {};

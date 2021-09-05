@@ -17,17 +17,23 @@ import javax.validation.constraints.NotBlank;
  * @version 1.0
  */
 public class ProductVO {
+	
+	/** Product id */
 	private long id;
 
+	/** Product name */
 	@NotBlank(message = "Name is mandatory")
 	private String name;
 
+	/** Product description*/
 	@NotBlank(message = "Description is mandatory")
 	private String description;
 
+	/** Product child SKUs */
 	@Valid
 	private List<SkuVO> childSkus;
 
+	/** Product comments */
 	private List<CommentVO> comments;
 	
 	/**
@@ -120,5 +126,15 @@ public class ProductVO {
 	 */
 	public void setComments(List<CommentVO> comments) {
 		this.comments = comments;
+	}
+
+	/**
+	 * Create a string with the Product properties
+	 * @return string of Product
+	 */
+	@Override
+	public String toString() {
+		return "ProductVO [id=" + id + ", name=" + name + ", description=" + description + ", childSkus=" + childSkus
+				+ ", comments=" + comments + "]";
 	}
 }

@@ -6,8 +6,11 @@
  */
 package mx.tec.web.lab.vo;
 
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
+import mx.tec.web.lab.validation.ValidColor;
 import mx.tec.web.lab.validation.ValidSize;
 
 /**
@@ -16,18 +19,47 @@ import mx.tec.web.lab.validation.ValidSize;
  * @version 2.0
  */
 public class SkuVO {
+	
+	/** Sku id */
 	private long id;
+	
+	/** Sku color, is mandatory and custom validated */
 	@NotBlank(message = "Color is mandatory")
+	@ValidColor
 	private String color;
+	
+	/** Sku size, is mandatory and custom validated */
 	@ValidSize
 	@NotBlank(message = "Size is mandatory")
 	private String size;
+	
+	/** Sku list price, has a digit constraint  */
+	@Digits(integer = 4, fraction = 2)
 	private double listPrice;
+	
+	/** Sku sale price, has a digit constraint  */
+	@Digits(integer = 4, fraction = 2)
 	private double salePrice;
+	
+	/** Sku quantity on hand, has a digit constraint  */
+	@Digits(integer = 6, fraction = 0)
 	private long quantityOnHand;
+	
+	/** Sku small image url, is mandatory, and has regular expressions */
+	@NotBlank(message = "Small image url is mandatory")
+	@Pattern(regexp = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]", message = "Please use a valid url")
 	private String smallImageUrl;
+	
+	/** Sku medium image url, is mandatory, and has regular expressions */
+	@NotBlank(message = "Medium image url is mandatory")
+	@Pattern(regexp = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]", message = "Please use a valid url")
 	private String mediumImageUrl;
+	
+	/** Sku large image url, is mandatory, and has regular expressions */
+	@NotBlank(message = "Large image url is mandatory")
+	@Pattern(regexp = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]", message = "Please use a valid url")
 	private String largeImageUrl;
+
 
 	/**
 	 * No arguments constructor
@@ -185,5 +217,16 @@ public class SkuVO {
 	 */
 	public void setLargeImageUrl(String largeImageUrl) {
 		this.largeImageUrl = largeImageUrl;
+	}
+
+	/**
+	 * Create a string with the Product properties
+	 * @return string of Sku
+	 */
+	@Override
+	public String toString() {
+		return "SkuVO [id=" + id + ", color=" + color + ", size=" + size + ", listPrice=" + listPrice + ", salePrice="
+				+ salePrice + ", quantityOnHand=" + quantityOnHand + ", smallImageUrl=" + smallImageUrl
+				+ ", mediumImageUrl=" + mediumImageUrl + ", largeImageUrl=" + largeImageUrl + "]";
 	}
 }

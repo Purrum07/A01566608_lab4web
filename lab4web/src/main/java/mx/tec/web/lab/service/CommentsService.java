@@ -41,7 +41,8 @@ public class CommentsService {
 	private String endpoint;
 
 	/**
-	 * No args constructor
+	 * Constructor for comment service with its properties
+	 * @param endpoint This is the endpoint to the comment service which is indicated in the application.properties
 	 */
 	public CommentsService(@Value("${commentsEndpoint}") String endpoint) {
 		this.endpoint = endpoint;
